@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 app_data = json.load(open('data.json'))
 LINK_REGEX = re.compile(
-    r"^(https?://)?([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}(/.*)?$")
+    r"^(https?://)([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}(/.*)?$")
 
 
 def get_random_unique_key():
