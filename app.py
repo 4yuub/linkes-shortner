@@ -1,4 +1,5 @@
 import json
+import re
 from random import choices
 from string import ascii_letters, digits
 
@@ -7,6 +8,8 @@ from flask import Flask, redirect, render_template, request, url_for
 app = Flask(__name__)
 
 app_data = json.load(open('data.json'))
+LINK_REGEX = re.compile(
+    r"^(https?://)?([a-zA-Z0-9_-]+\.)+[a-zA-Z]{2,6}(/.*)?$")
 
 
 def get_random_unique_key():
@@ -61,6 +64,9 @@ def create():
 
     if is_protected and (password is None or password == ''):
         return {'message': 'Please enter a valid password.'}, 400
+
+    if not LINK_REGEX.match(original_url):
+        return {'message': 'Please enter a valid URL.'}, 400
 
     key = get_random_unique_key()
     app_data[key] = {
