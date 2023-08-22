@@ -34,10 +34,11 @@ def index():
 @app.route('/<key>/password', methods=['POST'])
 def check_password(key):
     body = request.get_json()
-    data = json.loads(db.get("shortner_" + key))
+    data = db.get("shortner_" + key)
 
     if data is None:
         return {'message': 'Invalid URL.'}, 400
+    data = json.loads(data)
 
     if body.get('password') != data.get('password'):
         return {'message': 'Invalid Password.'}, 400
@@ -47,9 +48,10 @@ def check_password(key):
 
 @app.route('/<key>')
 def redirect_to_original_url(key):
-    data = json.loads(db.get("shortner_" + key))
+    data = db.get("shortner_" + key)
     if data is None:
         return redirect(url_for('index'))
+    data = json.loads(data)
 
     if data['isProtected']:
         return render_template('password.html', key=key)
