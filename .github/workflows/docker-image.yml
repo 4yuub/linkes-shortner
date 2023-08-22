@@ -22,6 +22,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
     - name: pornHub Build
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
       run: docker build . --file Dockerfile --tag $DOCKER_USER/links-shortner:latest
 
     - name: pornHub Push
