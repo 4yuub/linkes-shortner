@@ -23,6 +23,8 @@ This repository contains a simple URL shortener implemented using Flask, a light
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the application: `python3 app.py`
 
+**Note:** For easy deployment, this application can be run using Docker
+
 ## Usage
 
 1. Open the application in your web browser.
