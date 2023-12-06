@@ -19,7 +19,7 @@ This repository contains a simple URL shortener implemented using Flask, a light
 
 ### Installation
 
-1. Clone the repository: `git clone [https://github.com/your-username/flask-url-shortener.git](https://github.com/4yuub/linkes-shortner)`
+1. Clone the repository: `git clone https://github.com/4yuub/linkes-shortner`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the application: `python3 app.py`
 
